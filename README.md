@@ -13,11 +13,27 @@
 
 3. the ansible role creates local 3 node docker minio cluster using ansible docker-compose module
 
-   ``` ansible-playbook minio.yml```
+   ``` ansible-playbook minio.yml``` 
+   
+   when finished bucket can be showed on http://localhost:9001 
+   
+   user: minio
+   
+   password: minio123
+   
+   cleanup
+   
+   ```
+   docker-compose -f minio/docker-compose.yml down -v
+   ```
 
-4. credentials_key.json required for running terraform 
-
+4. google project credentials_key.json required for running terraform
+   ```
+   export GOOGLE_CLOUD_KEYFILE_JSON=key.json
+   ```
+   
    from terraform folder
+
 ```terraform
    terraform init 
    terraform plan 
