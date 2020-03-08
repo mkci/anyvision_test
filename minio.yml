@@ -1,0 +1,5 @@
+- name: Deploy minio
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - minio_deploy

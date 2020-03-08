@@ -1,0 +1,41 @@
+---
+# tasks file for minio_deploy
+- name: create minio cluster
+  docker_compose:
+    project_src: minio
+    state: present
+
+- name: Check if minio client exist
+  stat:
+    path: /usr/local/bin/mc
+  register: mc
+
+- name: Download minio client
+  get_url:
+    url: https://dl.min.io/server/minio/release/linux-amd64/minio
+    dest: /usr/local/bin/
+    mode: '0755'
+  when: not mc.stat.exists
+
+- name: Wait for port 9001 to become open on the host
+  wait_for:
+    port: 9001
+    delay: 5
+
+- name: Configure minio client
+  shell: mc config host add minio_cluster http://localhost:9001 minio minio123
+
+- name: Create bucket
+  shell: mc mb minio_cluster/pipe
+
+- name: Create folder for files
+  file:
+    path: files
+    state: directory
+    mode: '0755'
+
+- name: Create 1000 1k files
+  shell: for i in {1..1000} ; do truncate -s 1k files/$i.txt ; done
+
+- name: Upload files to bucket
+  shell: mc cp files/*.txt minio_cluster/pipe
