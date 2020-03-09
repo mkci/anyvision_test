@@ -42,3 +42,8 @@
    terraform plan 
    terraform apply
  ```
+ 
+ cleanup
+ ```
+ terraform destroy
+ ```
