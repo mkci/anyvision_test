@@ -7,7 +7,8 @@
    cron example with running twice a day each 12 hours on cron file
 
 2. tested using minikube
-```minikube start
+```
+   minikube start
    eval $(minikube docker-env)
    docker build -t nginx_ssl .
    kubectl apply -f nginx_deploy.yaml
@@ -33,10 +34,10 @@
    ```
    export GOOGLE_CLOUD_KEYFILE_JSON=key.json
    ```
-   
-   from terraform folder
 
-```terraform
+```
+   cd terraform
+   terraform
    terraform init 
    terraform plan 
    terraform apply
