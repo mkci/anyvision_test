@@ -4,7 +4,7 @@
 
    the script creates backups folder with db dumps and rsync it to /tmp
    
-   cron example from running twice a day each 12 hours on cron file
+   cron example with running twice a day each 12 hours on cron file
 
 2. tested using minikube
 ```minikube start
