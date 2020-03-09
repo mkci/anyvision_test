@@ -7,12 +7,12 @@
    cron example with running twice a day each 12 hours on cron file
 
 2. tested using minikube
-```
+   ```
    minikube start
    eval $(minikube docker-env)
    docker build -t nginx_ssl .
    kubectl apply -f nginx_deploy.yaml
-```
+   ```
 
 3. the ansible role creates local 3 node docker minio cluster using ansible docker-compose module
 
@@ -35,15 +35,15 @@
    export GOOGLE_CLOUD_KEYFILE_JSON=key.json
    ```
 
-```
+   ```
    cd terraform
    terraform
    terraform init 
    terraform plan 
    terraform apply
- ```
+   ```
  
- cleanup
- ```
- terraform destroy
- ```
+   cleanup
+   ```
+   terraform destroy
+   ```
