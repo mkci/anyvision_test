@@ -29,6 +29,9 @@
    ```
    docker-compose -f minio/docker-compose.yml down -v
    ```
+   how minio clusters works? 
+   
+   Minio use eraser coding which replicates & divides the data and spread it across multiple drives providing high availability and        reliability.
 
 4. google project credentials_key.json required for running terraform
    ```
